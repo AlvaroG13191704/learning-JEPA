@@ -28,7 +28,7 @@
       </table>
     </div>
     <footer class="mt-16 border-t border-line pt-4 text-[.9rem] text-muted">
-      Las cifras y detalles de BYOL, VICReg y los papers 2 a 9 están contrastados con los PDFs de arXiv. El documento de LeCun (paper 1) no se pudo descargar y su capítulo sigue sin contrastar. Antes de citar un número, compruébalo en el paper. Las demos son simplificaciones didácticas en 2D, no reproducciones de los experimentos.
+      Las cifras y detalles de todos los capítulos están contrastados con los PDFs originales (arXiv y, para el documento de LeCun, OpenReview). Antes de citar un número, compruébalo en el paper. Las demos son simplificaciones didácticas en 2D, no reproducciones de los experimentos.
     </footer>
   {/snippet}
 </Chapter>
