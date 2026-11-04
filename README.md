@@ -62,3 +62,10 @@ Código de color en todo el sitio: azul = contexto (lo visible), ámbar = objeti
 6. Texto (LLM-JEPA y buenas vs malas vistas).
 
 Plan completo: https://claude.ai/artifact/FEpNZnjSirKZZiTvZGEUEG
+
+## Despliegue en Cloudflare
+
+La web es estática (Vite genera `dist/`) y se despliega como un Worker con *static assets* (config en `wrangler.jsonc`).
+
+- **Automático (recomendado):** en Cloudflare → Workers & Pages → Create → Import a repository, elige este repo. Build command: `pnpm build`. Deploy command: `npx wrangler deploy`. Cada push a `main` despliega.
+- **Manual:** `pnpm wrangler login` y luego `pnpm cf:deploy`. Para probar en local con el runtime de Cloudflare: `pnpm cf:preview`.
