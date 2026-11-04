@@ -10,17 +10,17 @@
   {/snippet}
   {#snippet demo()}<McDemo />{/snippet}
   {#snippet keys()}
-    <li><span>Flujo óptico auto-supervisado: se predice el movimiento y se verifica deformando un fotograma para reconstruir el siguiente.</span></li>
-    <li><span>Contenido con una pérdida tipo VICReg sobre imágenes.</span></li>
-    <li><span>Las dos pérdidas comparten encoder y se entrenan juntas: el encoder resultante sirve tanto para segmentación como para estimar movimiento.</span></li>
+    <li><span>Flujo óptico auto-supervisado (la parte que llaman M-JEPA, basada en PWC-Net): el flujo predicho deforma los rasgos del fotograma t y se compara con los rasgos del fotograma t+1 en cada nivel de la pirámide; en el último nivel se deforma la imagen y se compara en píxeles.</span></li>
+    <li><span>Contenido con VICReg sobre dos vistas aumentadas (recorte, color) de imágenes de ImageNet. El flujo se entrena con videos; el contenido, con imágenes.</span></li>
+    <li><span>Las dos pérdidas comparten encoder (un ConvNeXt-T) y se suman en cada paso: el encoder resultante sirve tanto para segmentación (Cityscapes, DAVIS) como para estimar movimiento (KITTI, Sintel).</span></li>
   {/snippet}
   {#snippet math()}
-    <div class="eq">pérdida = pérdida<sub>flujo</sub> + pérdida<sub>contenido (VICReg)</sub></div>
-    <p>Dos objetivos, un encoder. La gracia está en compartir, no en una fórmula nueva.</p>
+    <div class="eq">pérdida = Σ<sub>videos</sub> (L<sub>rec</sub> + L<sub>reg</sub> + L<sub>suave</sub> + L<sub>ciclo</sub> + L<sub>vc</sub>) + Σ<sub>imágenes</sub> L<sub>VICReg</sub></div>
+    <p>Los cinco primeros términos son el flujo: reconstrucción de la imagen, regresión de rasgos por nivel, suavidad del flujo, consistencia de ciclo y regularización de varianza-covarianza. El último es el contenido. Cada término lleva su propio coeficiente, ajustado a mano. Dos objetivos, un encoder: la gracia está en compartir, no en una fórmula nueva.</p>
   {/snippet}
   {#snippet deep()}
-    <p>El estimador de flujo es piramidal: predice el movimiento a varias escalas de la representación, de grueso a fino. Se añaden términos de suavidad y de consistencia entre flujo hacia adelante y hacia atrás. Es el paper "más ingenieril" de la lista; su valor para ti es la idea de que el video da una señal de entrenamiento gratis (el movimiento) que las imágenes no tienen.</p>
-    <p class="src">Paper: busca "MC-JEPA: A Joint-Embedding Predictive Architecture for Self-Supervised Learning of Motion and Content Features" en <a href="https://arxiv.org/">arXiv</a></p>
+    <p>El estimador de flujo es piramidal: predice el movimiento a varias escalas de la representación, de grueso a fino. Se añaden un término de suavidad y uno de consistencia de ciclo: los rasgos de t, llevados a t+1 con el flujo hacia adelante y devueltos con el flujo hacia atrás, deben volver a ser los mismos. Un detalle que el paper subraya: al entrenar las dos tareas juntas, el entrenamiento era muy inestable hasta que añadieron la regularización de varianza-covarianza en cada nivel de rasgos. Es el paper "más ingenieril" de la lista; su valor para ti es la idea de que el video da una señal de entrenamiento gratis (el movimiento) que las imágenes no tienen.</p>
+    <p class="src">Paper: <a href="https://arxiv.org/abs/2307.12698">MC-JEPA (arXiv 2307.12698)</a></p>
   {/snippet}
   {#snippet bridge()}Si la receta funciona para píxeles, debería funcionar para cualquier cosa que se pueda cortar en parches. <b>Por ejemplo, el sonido.</b>{/snippet}
 </Chapter>
