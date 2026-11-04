@@ -18,8 +18,8 @@
     <li><span>Ambos dependen de aumentos hechos a mano; JEPA los reemplaza por <b>enmascarar</b>.</span></li>
   {/snippet}
   {#snippet math()}
-    <div class="eq">EMA: θ<sub>maestro</sub> ← τ·θ<sub>maestro</sub> + (1−τ)·θ<sub>alumna</sub>,  τ ≈ 0.996</div>
-    <p>El maestro cambia muy despacio: es como una versión "promediada" de la alumna.</p>
+    <div class="eq">EMA: θ<sub>maestro</sub> ← τ·θ<sub>maestro</sub> + (1−τ)·θ<sub>alumna</sub>,  τ: de 0.996 a 1</div>
+    <p>El maestro cambia muy despacio: es como una versión "promediada" de la alumna. En BYOL, τ arranca en 0.996 y sube hasta 1 con una curva coseno a lo largo del entrenamiento.</p>
     <div class="eq">VICReg = λ·‖z − z′‖² + μ·máx(0, 1 − std(z)) + ν·Σ cov(z)²<sub>fuera de la diagonal</sub></div>
     <p>Invarianza (que coincidan), varianza (que no se aplasten), covarianza (que no se repitan).</p>
   {/snippet}

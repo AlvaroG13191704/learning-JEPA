@@ -6,15 +6,15 @@
 <Chapter id="p2" year="2023" meta={['Assran et al. · CVPR 2023', 'fases 1–2 de tu proyecto']} title="I-JEPA: aprender de imágenes sin aumentos">
   {#snippet oneliner()}Un bloque grande de la imagen <b>predice la representación</b> de cuatro bloques ocultos. Nada más.{/snippet}
   {#snippet story()}
-    <p>I-JEPA corta la imagen en parches (una cuadrícula de 14×14 para una imagen de 224 píxeles con parches de 16). Elige cuatro rectángulos como <span class="k-tgt">objetivos</span> y un rectángulo grande como <span class="k-ctx">contexto</span>, al que le quita cualquier parche que se solape con los objetivos. El encoder de contexto solo ve los parches azules. El encoder objetivo ve la imagen completa, y de su salida se recortan los parches ámbar. El predictor recibe el contexto más "marcadores" que dicen en qué posición está cada parche a adivinar.</p>
+    <p>I-JEPA corta la imagen en parches (por ejemplo, una cuadrícula de 14×14 para una imagen de 224 píxeles con parches de 16). Elige cuatro rectángulos como <span class="k-tgt">objetivos</span>, cada uno de entre el 15 y el 20 % de la imagen, y un rectángulo grande como <span class="k-ctx">contexto</span>, de entre el 85 y el 100 %, al que le quita cualquier parche que se solape con los objetivos. El encoder de contexto solo ve los parches azules. El encoder objetivo ve la imagen completa, y de su salida se recortan los parches ámbar. El predictor recibe el contexto más "marcadores" que dicen en qué posición está cada parche a adivinar.</p>
     <p>El tamaño de los bloques importa mucho. Si los objetivos son diminutos, se pueden adivinar mirando el parche de al lado y la red aprende textura. Si son grandes, la red tiene que entender <i>partes de objetos</i>: dónde va la cabeza del perro, qué hay debajo de la mesa.</p>
   {/snippet}
   {#snippet demo()}<IjepaDemo />{/snippet}
   {#snippet keys()}
     <li><span><b>Sin aumentos de datos.</b> Ni recortes ni cambios de color: solo enmascarar. Eso lo hace más general que BYOL o SimCLR.</span></li>
-    <li><span>El encoder objetivo es una copia EMA del encoder de contexto (la receta de BYOL), y no recibe gradientes.</span></li>
+    <li><span>El encoder objetivo es una copia EMA del encoder de contexto (la receta de BYOL), y no recibe gradientes. El momento empieza en 0.996 y sube linealmente hasta 1.</span></li>
     <li><span>Las representaciones se comparan parche a parche, con error cuadrático (L2).</span></li>
-    <li><span>Eficiente: según el paper, un ViT-Huge se entrena en ImageNet en menos de 72 horas con 16 GPUs A100, mucho menos cómputo que otros métodos comparables.</span></li>
+    <li><span>Eficiente: según el paper, un ViT-Huge/14 se entrena en ImageNet en menos de 72 horas con 16 GPUs A100, mucho menos cómputo que otros métodos comparables.</span></li>
   {/snippet}
   {#snippet math()}
     <div class="eq">pérdida = (1/4) Σ<sub>i=1..4</sub> Σ<sub>parche j ∈ bloque i</sub> ‖ ŝ<sub>j</sub> − s<sub>j</sub> ‖²</div>
