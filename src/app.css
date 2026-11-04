@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/*
+  Atlas JEPA: cuaderno de laboratorio del espacio latente.
+  Código de color con significado en todo el sitio:
+  azul = contexto (lo visible), ámbar = objetivo (lo oculto), violeta = predicción.
+*/
+:root {
+  --bg: #eef1f4;
+  --surface: #f8fafb;
+  --ink: #13202f;
+  --muted: #56657a;
+  --line: #cfd7e0;
+  --ctx: #2350c8;
+  --tgt: #c9790a;
+  --pred: #7a3fc4;
+  --ok: #16815a;
+  --bad: #c23a3a;
+  --sky: #bcd6ee;
+  --sun: #f1b93c;
+  --grass: #7fb069;
+  --tree: #3f7d4e;
+  --trunk: #7a5536;
+  --house: #d9825b;
+  --roof: #8f3f2f;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141d; --surface: #151d29; --ink: #e3e9f1; --muted: #93a2b6; --line: #2a3647;
+    --ctx: #6f9bff; --tgt: #f0a93a; --pred: #b78cff; --ok: #4cc58f; --bad: #ff7b7b;
+    --sky: #2b4a6b; --sun: #e0a93a; --grass: #4f7d44; --tree: #2f6140; --trunk: #6b4a30; --house: #b36a4a; --roof: #7a3528;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141d; --surface: #151d29; --ink: #e3e9f1; --muted: #93a2b6; --line: #2a3647;
+  --ctx: #6f9bff; --tgt: #f0a93a; --pred: #b78cff; --ok: #4cc58f; --bad: #ff7b7b;
+  --sky: #2b4a6b; --sun: #e0a93a; --grass: #4f7d44; --tree: #2f6140; --trunk: #6b4a30; --house: #b36a4a; --roof: #7a3528;
+  color-scheme: dark;
+}
+
+/* Tokens expuestos como utilidades de Tailwind: bg-paper, text-ink, text-pred, font-display... */
+@theme inline {
+  --color-paper: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-ctx: var(--ctx);
+  --color-tgt: var(--tgt);
+  --color-pred: var(--pred);
+  --color-ok: var(--ok);
+  --color-bad: var(--bad);
+  --font-display: var(--display);
+  --font-body: var(--body);
+  --font-mono: var(--mono);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    @apply bg-paper text-ink font-body text-[1.06rem] leading-[1.62];
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  a { @apply text-ctx underline; }
+  h1, h2, h3, h4 { @apply font-display; text-wrap: balance; }
+  :focus-visible { outline: 2px solid var(--pred); outline-offset: 2px; }
+  canvas { border-radius: 8px; touch-action: manipulation; }
+}
+
+@layer components {
+  .prose-col { @apply max-w-[66ch]; }
+  .prose-col p { @apply mb-4; }
+  .k-ctx { @apply text-ctx font-semibold; }
+  .k-tgt { @apply text-tgt font-semibold; }
+  .k-pred { @apply text-pred font-semibold; }
+
+  .demo { @apply bg-surface border border-line rounded-2xl p-[18px] my-7 max-w-[900px]; }
+  .demo figcaption { @apply font-display text-[.9rem] text-muted mt-3 leading-snug; }
+  .demo-head { @apply flex flex-wrap gap-x-4 gap-y-2 items-baseline justify-between mb-3; }
+  .demo-head h3 { @apply text-[1.05rem] font-bold; }
+  .hint { @apply font-mono text-[.74rem] text-muted; }
+
+  .controls { @apply flex flex-wrap gap-2 mt-3 items-center; }
+  .chip {
+    @apply font-display text-[.86rem] font-semibold px-[13px] py-[7px] rounded-full border border-line bg-paper text-ink cursor-pointer transition-colors;
+  }
+  .chip:hover { @apply border-muted; }
+  .chip[aria-pressed="true"] { @apply bg-ink text-paper border-ink; }
+  .chip.go { @apply bg-pred text-white border-pred; }
+
+  .readout { @apply font-mono text-[.8rem] text-muted grid gap-1 tabular-nums; }
+  .readout b { @apply text-ink font-semibold; }
+  .slider { @apply font-mono text-[.78rem] text-muted flex gap-2.5 items-center flex-wrap; }
+  .slider input { accent-color: var(--pred); width: min(260px, 100%); }
+
+  .legend { @apply flex flex-wrap gap-3 font-mono text-[.72rem] text-muted; }
+  .legend span::before {
+    content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px;
+    margin-right: 6px; vertical-align: -1px; background: var(--c);
+  }
+
+  .eyebrow { @apply font-mono text-[.74rem] tracking-[.12em] uppercase text-muted; }
+
+  svg.diagram { @apply w-full h-auto block text-ink font-display; }
+}
