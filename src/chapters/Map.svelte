@@ -28,7 +28,7 @@
       </table>
     </div>
     <footer class="mt-16 border-t border-line pt-4 text-[.9rem] text-muted">
-      Las cifras y detalles de cada paper salen de mi conocimiento de los originales y del resumen del paper 9; no pude abrir los PDFs. Antes de citar un número, compruébalo en el paper. Las demos son simplificaciones didácticas en 2D, no reproducciones de los experimentos.
+      Las cifras y detalles de todos los capítulos están contrastados con los PDFs originales (arXiv y, para el documento de LeCun, OpenReview). Antes de citar un número, compruébalo en el paper. Las demos son simplificaciones didácticas en 2D, no reproducciones de los experimentos.
     </footer>
   {/snippet}
 </Chapter>
