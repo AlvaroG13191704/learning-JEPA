@@ -11,6 +11,6 @@
   {/snippet}
   {#snippet demo()}<CompareDiagram />{/snippet}
   {#snippet after()}
-    <p>Hay una trampa evidente. Si la red aprende a dar <b>el mismo vector para todo</b>, la predicción siempre es perfecta y la pérdida es cero, pero no aprendió nada. Eso se llama <b>colapso</b>. Casi cada paper de esta guía es, en el fondo, una respuesta distinta a la pregunta "¿cómo evitamos el colapso?". Por eso empezamos por ahí.</p>
+    <p>Hay una trampa evidente. Si la red aprende a dar <b>el mismo vector para todo</b>, la predicción siempre es perfecta y la pérdida es cero, pero no aprendió nada. Eso se llama <b>colapso</b>. Casi cada paper de esta guía es, en el fondo, una respuesta distinta a la pregunta "¿cómo evitamos el colapso?". Por eso la ruta de papers empieza por ahí. Antes, si palabras como <i>gaussiana</i>, <i>cross-entropy</i> o <i>norma L1</i> te frenan, pasa por los <a href="#fundamentos">fundamentos</a>: ocho temas cortos, cada uno con su demo.</p>
   {/snippet}
 </Chapter>
