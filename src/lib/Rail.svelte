@@ -24,10 +24,13 @@
   <i class="block h-[3px] bg-linear-to-r from-ctx via-pred to-tgt" style:width="{progress}%"></i>
 </div>
 
-<nav class="sticky top-[calc(env(safe-area-inset-top,0px)+24px)] self-start py-8 font-display max-[900px]:hidden" aria-label="Capítulos">
+<nav class="sticky top-[calc(env(safe-area-inset-top,0px)+24px)] max-h-[calc(100vh-24px)] self-start overflow-y-auto py-8 font-display max-[900px]:hidden" aria-label="Capítulos">
   <a class="mb-5 block text-[1.05rem] font-extrabold tracking-[-.01em] text-ink no-underline" href="#inicio">Atlas JEPA</a>
   <ol class="border-l border-line">
     {#each chapters as c, i}
+      {#if i === 0 || chapters[i - 1].group !== c.group}
+        <li class="pt-3 pb-1 pl-3 font-mono text-[.66rem] tracking-[.12em] text-muted uppercase first:pt-0" aria-hidden="true">{c.group}</li>
+      {/if}
       <li>
         <a href="#{c.id}"
           class="-ml-px grid grid-cols-[40px_1fr] gap-1.5 border-l-2 py-[5px] pl-3 text-[.86rem] leading-tight no-underline hover:text-ink

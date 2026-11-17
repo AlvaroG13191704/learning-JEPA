@@ -4,7 +4,7 @@ Proyecto para aprender la arquitectura JEPA (Joint-Embedding Predictive Architec
 
 ## Atlas JEPA (web)
 
-Una guía narrativa e interactiva, en español, de los 10 papers de la ruta de lectura. Cada capítulo trae la idea en una frase, la historia con ejemplos, una demo animada, los puntos clave, la matemática mínima y una sección "Más a fondo".
+Una guía narrativa e interactiva, en español, de los 10 papers de la ruta de lectura, precedida por 8 capítulos de fundamentos (vectores y normas L1/L2, gradiente, gaussiana, entropía/cross-entropy/KL, Cross-Entropy Method, Transformers/ViT, SSL contrastivo vs predictivo y colapso). Cada capítulo trae la idea en una frase, la historia con ejemplos, una demo animada, los puntos clave, la matemática mínima y una sección "Más a fondo".
 
 Stack: **Svelte 5** (runes) + **Vite** + **Tailwind CSS 4** + TypeScript, con **pnpm**.
 
@@ -31,8 +31,8 @@ src/
     palette.ts        # lee los tokens CSS para dibujar en <canvas>
     canvas.ts         # canvas nítido, bucle de animación compartido (solo corre lo visible)
     scene.ts          # escena de ejemplo y su "verdad semántica"
-  chapters/           # un componente por paper
-  demos/              # una demo interactiva por paper
+  chapters/           # F0–F8: fundamentos · P0–P9: un componente por paper
+  demos/              # una demo interactiva por capítulo
 ```
 
 Código de color en todo el sitio: azul = contexto (lo visible), ámbar = objetivo (lo oculto), violeta = predicción.
