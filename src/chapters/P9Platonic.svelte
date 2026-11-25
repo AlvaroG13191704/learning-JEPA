@@ -6,7 +6,7 @@
 <Chapter id="p9" year="29 oct 2026" meta={['Balestriero, LeCun', 'fase 6']} title="Todos los modelos ven el mismo mundo">
   {#snippet oneliner()}Con <b>buenas vistas</b>, JEPAs distintos llegan a la misma representación, salvo una rotación.{/snippet}
   {#snippet story()}
-    <p>La "hipótesis de la representación platónica" observa que modelos muy distintos (de visión, de lenguaje) parecen converger hacia representaciones parecidas a medida que crecen, como si todos miraran sombras del mismo mundo real. Este paper, el más reciente de la lista, la convierte en teorema para JEPAs bajo supuestos idealizados.</p>
+    <p>La "hipótesis de la representación platónica" observa que modelos muy distintos (de visión, de lenguaje) parecen converger hacia representaciones parecidas a medida que crecen, como si todos miraran sombras del mismo mundo real. Este paper la convierte en teorema para JEPAs bajo supuestos idealizados.</p>
     <p>La clave es qué cuenta como vistas. <b>Buenas vistas</b> son dos observaciones distintas de la misma escena, como dos captions escritos por personas distintas para la misma foto. <b>Malas vistas</b> son corrupciones de una sola observación, como un caption con palabras tapadas. Según el paper, predecir el siguiente token es un JEPA con malas vistas, y por eso los LLMs solo se alinean con los modelos de visión a fuerza de escala.</p>
   {/snippet}
   {#snippet demo()}<PlatonicDemo />{/snippet}
@@ -24,4 +24,5 @@
     <p>En tu fase 6 lo pruebas: un JEPA de texto pequeño con buenas vistas (dos captions de una imagen de COCO) contra malas vistas (dos versiones enmascaradas de un caption), y mides cuánto se alinea cada uno con un encoder de imágenes congelado.</p>
     <p class="src">Paper: <a href="https://arxiv.org/abs/2610.39302">Proving and Improving the Platonic Representation Hypothesis with JEPAs (arXiv 2610.39302)</a></p>
   {/snippet}
+  {#snippet bridge()}Hasta aquí, los modelos aprenden qué pasa. El paso siguiente es preguntarles <b>qué habría pasado</b> si hubiéramos actuado de otra forma.{/snippet}
 </Chapter>

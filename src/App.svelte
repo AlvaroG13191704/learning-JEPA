@@ -22,6 +22,9 @@
   import P7LlmJepa from './chapters/P7LlmJepa.svelte';
   import P8LeJepa from './chapters/P8LeJepa.svelte';
   import P9Platonic from './chapters/P9Platonic.svelte';
+  import P10Counterfactual from './chapters/P10Counterfactual.svelte';
+  import Dentro from './chapters/Dentro.svelte';
+  import Investiga from './chapters/Investiga.svelte';
   import Map from './chapters/Map.svelte';
 
   const toc = chapters.filter((c) => 'toc' in c);
@@ -32,7 +35,7 @@
   <Rail />
   <main class="min-w-0 pt-6 pb-24">
     <header id="inicio" class="pt-10 pb-6">
-      <div class="eyebrow">Una guía narrativa · 8 fundamentos · 10 papers · 2020 → 2026</div>
+      <div class="eyebrow">Una guía narrativa · animaciones · 8 fundamentos · 11 papers · 2020 → 2026</div>
       <h1 class="mt-2.5 max-w-[14ch] text-[clamp(2.6rem,6vw,4.4rem)] leading-[1.02] font-extrabold tracking-[-.03em]">
         Predecir el <em class="text-pred not-italic">significado</em>, no los píxeles
       </h1>
@@ -62,6 +65,7 @@
     </header>
 
     <Idea />
+    <Dentro />
     <F0Fundamentos />
     <F1Vectores />
     <F2Gradiente />
@@ -81,6 +85,11 @@
     <P7LlmJepa />
     <P8LeJepa />
     <P9Platonic />
+    <P10Counterfactual />
     <Map />
+    <Investiga />
+    <footer class="mt-16 border-t border-line pt-4 text-[.9rem] text-muted">
+      Las cifras y detalles de todos los capítulos están contrastados con los PDFs originales (arXiv y, para el documento de LeCun, OpenReview). Antes de citar un número, compruébalo en el paper. Las demos son simplificaciones didácticas en 2D, no reproducciones de los experimentos.
+    </footer>
   </main>
 </div>

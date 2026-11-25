@@ -5,7 +5,7 @@
     ['2', 'Anti-colapso comparado', 'VICReg, LeJEPA', 'EMA, VICReg o SIGReg: ¿cuál da mejor rango efectivo?'],
     ['3', 'Audio', 'A-JEPA', '¿Importa enmascarar franjas de tiempo y frecuencia?'],
     ['4', 'Video', 'V-JEPA, MC-JEPA', '¿El encoder capta movimiento con máscaras en tubo?'],
-    ['5', 'Modelo del mundo con acciones', 'V-JEPA 2-AC, LeCun 2022', '¿Puedo planificar solo con representaciones?'],
+    ['5', 'Modelo del mundo con acciones', 'V-JEPA 2-AC, LeCun 2022, Contrafácticos', '¿Puedo planificar solo con representaciones? ¿Y razonar sobre lo que no hice?'],
     ['6', 'JEPA en texto', 'LLM-JEPA, Platónica', '¿Las buenas vistas alinean texto con imágenes?'],
   ];
 </script>
@@ -27,8 +27,5 @@
         </tbody>
       </table>
     </div>
-    <footer class="mt-16 border-t border-line pt-4 text-[.9rem] text-muted">
-      Las cifras y detalles de todos los capítulos están contrastados con los PDFs originales (arXiv y, para el documento de LeCun, OpenReview). Antes de citar un número, compruébalo en el paper. Las demos son simplificaciones didácticas en 2D, no reproducciones de los experimentos.
-    </footer>
   {/snippet}
 </Chapter>
