@@ -1,6 +1,7 @@
 /** Índice de la guía: alimenta el riel lateral y la tabla de contenidos. `group` agrupa el riel en secciones. */
 export const chapters = [
   { id: 'idea', group: 'Prólogo', tag: 'idea', rail: 'La idea en 1 minuto' },
+  { id: 'dentro', group: 'Prólogo', tag: 'anim', rail: 'Por dentro de un JEPA' },
   { id: 'fundamentos', group: 'Fundamentos', tag: 'mapa', rail: 'Qué necesitas saber', fund: 'Mapa y ruta de estudio' },
   { id: 'f1', group: 'Fundamentos', tag: 'F1', rail: 'Vectores y distancias', fund: 'Vectores, normas L1/L2 y coseno' },
   { id: 'f2', group: 'Fundamentos', tag: 'F2', rail: 'Gradiente', fund: 'Optimización por gradiente' },
@@ -20,5 +21,7 @@ export const chapters = [
   { id: 'p7', group: 'Papers', tag: '2025', rail: 'LLM-JEPA', toc: '7 · 2025', title: 'LLM-JEPA: texto y código' },
   { id: 'p8', group: 'Papers', tag: '2025', rail: 'LeJEPA', toc: '8 · 2025', title: 'LeJEPA: sin trucos' },
   { id: 'p9', group: 'Papers', tag: '2026', rail: 'Hipótesis platónica', toc: '9 · 2026', title: 'Todos los modelos ven lo mismo' },
+  { id: 'p10', group: 'Papers', tag: '2026', rail: 'Mundos contrafácticos', toc: '10 · 2026 · nuevo', title: 'Contrafácticos: ¿y si...?' },
   { id: 'mapa', group: 'Papers', tag: 'fin', rail: 'Del paper al código' },
+  { id: 'investiga', group: 'Tu laboratorio', tag: 'lab', rail: 'Investiga tú mismo' },
 ] as const;
